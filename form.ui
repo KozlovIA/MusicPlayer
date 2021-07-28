@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>802</width>
     <height>610</height>
    </rect>
   </property>
@@ -14,7 +14,7 @@
    <string>ToxicMusicPlayer</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-image: url(source/image/backGround.jpg);</string>
+   <string notr="true">background-image: url(source/image/backForForm.jpg);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="gridLayoutWidget">
@@ -27,8 +27,8 @@
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="1" column="5" rowspan="2">
-      <spacer name="verticalSpacer">
+     <item row="1" column="0" rowspan="2">
+      <spacer name="verticalSpacer_2">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
@@ -36,26 +36,6 @@
         <size>
          <width>20</width>
          <height>40</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item row="1" column="2">
-      <widget class="QSlider" name="timeSlider">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0" colspan="2">
-      <spacer name="horizontalSpacer_3">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
         </size>
        </property>
       </spacer>
@@ -88,13 +68,13 @@ color: rgb(0, 255, 255);
         </widget>
        </item>
        <item row="0" column="1">
-        <widget class="QPushButton" name="Pause">
+        <widget class="QPushButton" name="Play_Pause">
          <property name="styleSheet">
           <string notr="true">background-image: url(source/image/backButton.jpg);
 color: rgb(0, 255, 255);</string>
          </property>
          <property name="text">
-          <string>Pause</string>
+          <string>Play</string>
          </property>
         </widget>
        </item>
@@ -149,10 +129,30 @@ color: rgb(255, 255, 255);</string>
        </property>
       </widget>
      </item>
-     <item row="1" column="6">
-      <widget class="QSlider" name="volumeSlider">
+     <item row="0" column="5" rowspan="3">
+      <spacer name="verticalSpacer">
        <property name="orientation">
         <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="1" column="2">
+      <widget class="QSlider" name="timeSlider">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2" colspan="2">
+      <widget class="QLineEdit" name="lineEdit">
+       <property name="text">
+        <string>Now playing: none</string>
        </property>
       </widget>
      </item>
@@ -167,32 +167,81 @@ color: rgb(255, 255, 255);</string>
        </property>
       </widget>
      </item>
-     <item row="1" column="0" rowspan="2">
-      <spacer name="verticalSpacer_2">
+     <item row="0" column="0" colspan="2">
+      <spacer name="horizontalSpacer_3">
        <property name="orientation">
-        <enum>Qt::Vertical</enum>
+        <enum>Qt::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>20</width>
-         <height>40</height>
+         <width>40</width>
+         <height>20</height>
         </size>
        </property>
       </spacer>
+     </item>
+     <item row="1" column="6">
+      <widget class="QSlider" name="volumeSlider">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>
    <widget class="QGraphicsView" name="graphicsView">
     <property name="geometry">
      <rect>
-      <x>190</x>
+      <x>230</x>
       <y>0</y>
-      <width>400</width>
-      <height>360</height>
+      <width>291</width>
+      <height>241</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">ackground-image: url(source/image/music.jpeg);</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="AddMusic">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>270</y>
+      <width>301</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_WriteNameorUrl">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>250</y>
+      <width>181</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Write the name or URL</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="AddMusicButton">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>280</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Add to queue</string>
     </property>
    </widget>
   </widget>
@@ -201,7 +250,7 @@ color: rgb(255, 255, 255);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>802</width>
      <height>21</height>
     </rect>
    </property>

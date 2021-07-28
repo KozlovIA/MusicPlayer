@@ -1,5 +1,5 @@
 # This Python file uses the following encoding: utf-8
-import os
+import vlc
 from pathlib import Path
 import sys
 from PyQt6 import QtGui, uic, QtWidgets
@@ -18,16 +18,19 @@ class ToxicMusicPlayer(QMainWindow):
         uic.loadUi("form.ui", self)
 
 
-if __name__ == "__main__":
-    ui = form.Ui_ToxicMusicPlayer()
-    app = QtWidgets.QApplication(sys.argv)
-    main_window = QtWidgets.QMainWindow()
-    ui.setupUi(main_window)
-    main_window.show()   
-    #functional------------------------------------------------------------------------------------------------------
-    #ui.pushButton.clicked.connect(functional.PlayMusic.Music)
-    
 
-    #----------------------------------------------------------------------------------------------------------------
-    RetCode = app.exec()
-    sys.exit(RetCode)
+
+
+ui = form.Ui_ToxicMusicPlayer()
+app = QtWidgets.QApplication(sys.argv)
+main_window = QtWidgets.QMainWindow()
+ui.setupUi(main_window)
+main_window.show()   
+#functional------------------------------------------------------------------------------------------------------
+ui.Play_Pause.clicked.connect(functional.PlayMusic.play(url = "https://www.youtube.com/watch?v=ZCQ3IIFSn1s"))
+#ui.AddMusicButton.clicked.connect(functional.PlayMusic.GetNameOrUrl) # закончил тут, надо сделать ввод названий песен
+
+
+#----------------------------------------------------------------------------------------------------------------
+RetCode = app.exec()
+sys.exit(RetCode)

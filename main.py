@@ -1,6 +1,7 @@
 # This Python file uses the following encoding: utf-8
 from os import read
 import sys
+import numpy as np
 from PyQt6 import QtGui, uic, QtWidgets, QtCore
 from PySide6 import QtWidgets
 from gui import form
@@ -42,7 +43,10 @@ def stop():
     firstPush = True
     ui.Play_Pause.setText("Play")
     ui.songName.clear("Playlist is empty")
-
+    
+def volumeChange():
+    volume = np.interp(ui.volumeSlider.value(), [0, 99], [0, 100])
+    ToxicFunctional.set_volume(int(volume))
 #---------------------------------------------------------------------------------------------------------
 #--------------------- Создание окна ---------------------------------------------------------------------
 ui = form.Ui_ToxicMusicPlayer()
@@ -54,6 +58,7 @@ main_window.show()
 ui.Play_Pause.clicked.connect(play_pause)    
 ui.AddMusicButton.clicked.connect(searchUrl)
 ui.playStop.clicked.connect(stop)
+ui.volumeSlider.valueChanged.connect(volumeChange)
 
 
 #----------------------------------------------------------------------------------------------------------------

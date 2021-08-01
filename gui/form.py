@@ -3,14 +3,14 @@
 ################################################################################
 ## Form generated from reading UI file 'form.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.1.0
+## Created by: Qt User Interface Compiler version 6.1.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import *
-from PySide6.QtGui import *
-from PySide6.QtWidgets import *
+from PySide6.QtCore import *  # type: ignore
+from PySide6.QtGui import *  # type: ignore
+from PySide6.QtWidgets import *  # type: ignore
 
 
 class Ui_ToxicMusicPlayer(object):
@@ -27,29 +27,9 @@ class Ui_ToxicMusicPlayer(object):
         self.gridLayout = QGridLayout(self.gridLayoutWidget)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.songTime = QLabel(self.gridLayoutWidget)
-        self.songTime.setObjectName(u"songTime")
-        self.songTime.setStyleSheet(u"color: rgb(255, 255, 255);")
-
-        self.gridLayout.addWidget(self.songTime, 1, 4, 1, 1)
-
-        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout.addItem(self.horizontalSpacer_3, 0, 0, 1, 2)
-
         self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.gridLayout.addItem(self.verticalSpacer_2, 1, 0, 2, 1)
-
-        self.volumeSlider = QSlider(self.gridLayoutWidget)
-        self.volumeSlider.setObjectName(u"volumeSlider")
-        self.volumeSlider.setOrientation(Qt.Vertical)
-
-        self.gridLayout.addWidget(self.volumeSlider, 1, 6, 1, 1)
-
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.gridLayout.addItem(self.verticalSpacer, 0, 5, 3, 1)
 
         self.gridLayout_2 = QGridLayout()
         self.gridLayout_2.setObjectName(u"gridLayout_2")
@@ -93,6 +73,31 @@ class Ui_ToxicMusicPlayer(object):
 
         self.gridLayout.addLayout(self.gridLayout_2, 2, 1, 1, 4)
 
+        self.timeSlider = QSlider(self.gridLayoutWidget)
+        self.timeSlider.setObjectName(u"timeSlider")
+        self.timeSlider.setOrientation(Qt.Horizontal)
+
+        self.gridLayout.addWidget(self.timeSlider, 1, 3, 1, 1)
+
+        self.songTime = QLabel(self.gridLayoutWidget)
+        self.songTime.setObjectName(u"songTime")
+        self.songTime.setStyleSheet(u"color: rgb(255, 255, 255);")
+
+        self.gridLayout.addWidget(self.songTime, 1, 4, 1, 1)
+
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.gridLayout.addItem(self.verticalSpacer, 0, 5, 3, 1)
+
+        self.songName = QLabel(self.gridLayoutWidget)
+        self.songName.setObjectName(u"songName")
+
+        self.gridLayout.addWidget(self.songName, 0, 2, 1, 2)
+
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout.addItem(self.horizontalSpacer_3, 0, 0, 1, 2)
+
         self.timeAfterStart = QLabel(self.gridLayoutWidget)
         self.timeAfterStart.setObjectName(u"timeAfterStart")
         self.timeAfterStart.setAutoFillBackground(False)
@@ -100,16 +105,11 @@ class Ui_ToxicMusicPlayer(object):
 
         self.gridLayout.addWidget(self.timeAfterStart, 1, 1, 1, 1)
 
-        self.timeSlider = QSlider(self.gridLayoutWidget)
-        self.timeSlider.setObjectName(u"timeSlider")
-        self.timeSlider.setOrientation(Qt.Horizontal)
+        self.volumeSlider = QSlider(self.gridLayoutWidget)
+        self.volumeSlider.setObjectName(u"volumeSlider")
+        self.volumeSlider.setOrientation(Qt.Vertical)
 
-        self.gridLayout.addWidget(self.timeSlider, 1, 3, 1, 1)
-
-        self.songName = QLabel(self.gridLayoutWidget)
-        self.songName.setObjectName(u"songName")
-
-        self.gridLayout.addWidget(self.songName, 0, 2, 1, 2)
+        self.gridLayout.addWidget(self.volumeSlider, 1, 6, 1, 1)
 
         self.graphicsView = QGraphicsView(self.centralwidget)
         self.graphicsView.setObjectName(u"graphicsView")
@@ -141,13 +141,13 @@ class Ui_ToxicMusicPlayer(object):
 
     def retranslateUi(self, ToxicMusicPlayer):
         ToxicMusicPlayer.setWindowTitle(QCoreApplication.translate("ToxicMusicPlayer", u"ToxicMusicPlayer", None))
-        self.songTime.setText(QCoreApplication.translate("ToxicMusicPlayer", u"0:00", None))
         self.playNext.setText(QCoreApplication.translate("ToxicMusicPlayer", u">>", None))
         self.Play_Pause.setText(QCoreApplication.translate("ToxicMusicPlayer", u"Play", None))
         self.playBack.setText(QCoreApplication.translate("ToxicMusicPlayer", u"<<", None))
         self.playStop.setText(QCoreApplication.translate("ToxicMusicPlayer", u"Stop", None))
+        self.songTime.setText(QCoreApplication.translate("ToxicMusicPlayer", u"0:00", None))
+        self.songName.setText(QCoreApplication.translate("ToxicMusicPlayer", u"Playlist is empty", None))
         self.timeAfterStart.setText(QCoreApplication.translate("ToxicMusicPlayer", u"0:00", None))
-        self.songName.setText(QCoreApplication.translate("ToxicMusicPlayer", u"Non", None))
         self.AddMusic.setText("")
         self.label_WriteNameorUrl.setText(QCoreApplication.translate("ToxicMusicPlayer", u"Write the name or URL", None))
         self.AddMusicButton.setText(QCoreApplication.translate("ToxicMusicPlayer", u"Add to queue", None))

@@ -11,6 +11,8 @@ class PlayMusic():
     def __init__(self) -> None:
         self.Instance = vlc.Instance()
         self.player = self.Instance.media_player_new()
+        self.MediaPlayer = vlc.MediaPlayer()
+        self.volume = 100
         self.url = [""]*1000
         self.songName = [""]*1000
         self.numberName = 0     # Номер имени песни для записи в переменную self.url
@@ -40,9 +42,10 @@ class PlayMusic():
     def stop(self):
         self.player.stop()
 
-    def set_volume(self):
-        print("Volume changed?")
-        self.player.audio_set_volume_callback(0)
+    def set_volume(self, vol):
+        self.volume = vol
+        self.MediaPlayer.audio_set_volume(self.volume)
+
 
     def searchUrl(self, music_name):
         query_string = urllib.parse.urlencode({"search_query": music_name})
@@ -67,14 +70,17 @@ class PlayMusic():
         self.numberName = self.numberName + 1
         return clip2, concatMusic1['content']                
 
+
+    def test(self, vol):
+        print("volume: ")
+        self.MediaPlayer.audio_set_volume(vol)
+        print(self.MediaPlayer.audio_get_volume())
     
 
 if __name__ == "__main__":
     test = PlayMusic()
-
     song = test.searchUrl("Faint")
     test.play()
-    time.sleep(2)
-    test.set_volume()
+    test.test(20)
 
     a = input()

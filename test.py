@@ -50,7 +50,7 @@ video = input.video.hflip()
 out = ffmpeg.output(audio, video, 'out.mp3') """
 
 
-import pafy
+""" import pafy
 import vlc
 
 url = "https://www.youtube.com/watch?v=LYU-8IFcDPw"# Работает!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -64,8 +64,8 @@ Media = Instance.media_new(playurl)
 Media.get_mrl()
 player.set_media(Media)
 player.play()                   # Работает!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+ """
 
 c = input("c = ")
-
+print(len(c))
 

@@ -8,8 +8,8 @@ from gui import form
 import functional
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
 from PySide6.QtWidgets import QApplication, QMainWindow, QAbstractButton
-
-
+import requests
+from bs4 import BeautifulSoup
 
 class ToxicMusicPlayer(QMainWindow):
     def __init__(self):
@@ -19,14 +19,28 @@ class ToxicMusicPlayer(QMainWindow):
 
 
 def test():
-    print("Lalala all")
+    #print("Lalala all")
+    print("All URL: ", ToxicFunctional.url)
+    print("All Name: ", ToxicFunctional.songName)
+    print("len: ", len(ToxicFunctional.url))
+
 
 ToxicFunctional = functional.PlayMusic()
 firstPush = True
 def searchUrl():
     music_name = ui.AddMusic.text()
     ui.AddMusic.setText("Loading...")
-    ToxicFunctional.searchUrl(music_name=music_name)
+    if len(music_name) > 4:
+        if music_name[0]+music_name[1]+music_name[2]+music_name[3]+music_name[4]+music_name[5] == "https:":
+            clip = requests.get(music_name)
+            inspect = BeautifulSoup(clip.content, "html.parser")
+            yt_title = inspect.find_all("meta", property="og:title")
+            for concatMusic1 in yt_title:
+                pass
+            ToxicFunctional.addNext(music_name, concatMusic1['content'])
+    else:
+        if len(music_name) > 1:
+            ToxicFunctional.searchUrl(music_name=music_name)
     ui.AddMusic.clear()
 
 def play_pause():
@@ -42,11 +56,12 @@ def stop():
     ToxicFunctional.stop()
     firstPush = True
     ui.Play_Pause.setText("Play")
-    ui.songName.clear("Playlist is empty")
+    ui.songName.setText("Playlist is empty")
     
 def volumeChange():
-    volume = np.interp(ui.volumeSlider.value(), [0, 99], [0, 100])
-    ToxicFunctional.set_volume(int(volume))
+    #volume = np.interp(ui.volumeSlider.value(), [0, 99], [0, 100])
+    print(ui.volumeSlider.value())
+    ToxicFunctional.set_volume(ui.volumeSlider.value())
 #---------------------------------------------------------------------------------------------------------
 #--------------------- Создание окна ---------------------------------------------------------------------
 ui = form.Ui_ToxicMusicPlayer()
@@ -59,7 +74,7 @@ ui.Play_Pause.clicked.connect(play_pause)
 ui.AddMusicButton.clicked.connect(searchUrl)
 ui.playStop.clicked.connect(stop)
 ui.volumeSlider.valueChanged.connect(volumeChange)
-
+ui.testButton.clicked.connect(test)
 
 #----------------------------------------------------------------------------------------------------------------
 RetCode = app.exec()

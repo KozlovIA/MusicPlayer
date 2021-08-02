@@ -12,9 +12,9 @@ class PlayMusic():
         self.Instance = vlc.Instance()
         self.player = self.Instance.media_player_new()
         self.MediaPlayer = vlc.MediaPlayer()
-        self.volume = 100
-        self.url = [""]*1000
-        self.songName = [""]*1000
+        self.volume = 100       # текущее значение звука
+        self.url = [""]*1000    # list для ссылок на песни
+        self.songName = [""]*1000 # list названий песен
         self.numberName = 0     # Номер имени песни для записи в переменную self.url
         self.numberSong = 0     # Номер песни для вопроизведения
         self.firstPlay = True      # Переменная служит для использования вне класса, для проверки 1-го нажатия на Play/Pause
@@ -22,7 +22,6 @@ class PlayMusic():
         
 
     def play(self):
-        print("URL = ", self.url[self.numberSong])
         video = pafy.new(self.url[self.numberSong])         # https://coderoad.ru/49354232/%D0%9A%D0%B0%D0%BA-%D0%BF%D0%B5%D1%80%D0%B5%D0%B4%D0%B0%D0%B2%D0%B0%D1%82%D1%8C-%D0%B0%D1%83%D0%B4%D0%B8%D0%BE-%D0%B8%D0%B7-Youtube-URL-%D0%B2-Python-%D0%B1%D0%B5%D0%B7-%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B8
         best = video.getbest()
         playurl = best.url
@@ -46,8 +45,18 @@ class PlayMusic():
         self.volume = vol
         self.MediaPlayer.audio_set_volume(self.volume)
 
+    def addNext(self, url, name):
+        self.url[self.numberName] = url
+        self.songName[self.numberName] = name
+        self.numberName = self.numberName + 1
+        pass
+
+
+    def playNext():
+        pass
 
     def searchUrl(self, music_name):
+
         query_string = urllib.parse.urlencode({"search_query": music_name})
 
         formatUrl = urllib.request.urlopen("https://www.youtube.com/results?" + query_string)
@@ -65,9 +74,8 @@ class PlayMusic():
         for concatMusic1 in yt_title:
             pass
         #print(concatMusic1['content'])
-        self.url[self.numberName] = clip2
-        self.songName[self.numberName] = concatMusic1['content']
-        self.numberName = self.numberName + 1
+        self.addNext(clip2, concatMusic1['content'])
+
         return clip2, concatMusic1['content']                
 
 

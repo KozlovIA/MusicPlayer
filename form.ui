@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>802</width>
+    <width>800</width>
     <height>610</height>
    </rect>
   </property>
@@ -115,13 +115,6 @@ color: rgb(0, 255, 255);</string>
        </item>
       </layout>
      </item>
-     <item row="1" column="3">
-      <widget class="QSlider" name="timeSlider">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
-     </item>
      <item row="1" column="4">
       <widget class="QLabel" name="songTime">
        <property name="styleSheet">
@@ -144,6 +137,16 @@ color: rgb(0, 255, 255);</string>
         </size>
        </property>
       </spacer>
+     </item>
+     <item row="1" column="6">
+      <widget class="QSlider" name="volumeSlider">
+       <property name="maximum">
+        <number>100</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
      </item>
      <item row="0" column="2" colspan="2">
       <widget class="QLabel" name="songName">
@@ -178,10 +181,10 @@ color: rgb(0, 255, 255);</string>
        </property>
       </widget>
      </item>
-     <item row="1" column="6">
-      <widget class="QSlider" name="volumeSlider">
+     <item row="1" column="3">
+      <widget class="QSlider" name="timeSlider">
        <property name="orientation">
-        <enum>Qt::Vertical</enum>
+        <enum>Qt::Horizontal</enum>
        </property>
       </widget>
      </item>
@@ -242,13 +245,26 @@ color: rgb(0, 255, 255);</string>
      <string>Add to queue</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="testButton">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>220</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>testButton</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>802</width>
+     <width>800</width>
      <height>21</height>
     </rect>
    </property>

@@ -1,5 +1,6 @@
 import re, requests, subprocess, urllib.parse, urllib.request
 from bs4 import BeautifulSoup
+import time
 
 """ music_name = "Linkin Park Numb"
 query_string = urllib.parse.urlencode({"search_query": music_name})
@@ -25,7 +26,7 @@ a = input("a = ")
 subprocess.Popen("start /b " + "C:\PyProject\playMusicPython\MPVplayer\mpv.exe " + clip2 + "--no-video", shell=True)
 b = input("b = ") """
 
-import vlc
+import vlc, pafy
 from PySide6.QtCore import QUrl
 from PyQt5.QtMultimedia import QMediaContent, QMediaPlayer
 
@@ -65,6 +66,33 @@ Media.get_mrl()
 player.set_media(Media)
 player.play()                   # Работает!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  """
+
+
+# TEST MediaList(Player)
+url = "https://www.youtube.com/watch?v=LYU-8IFcDPw"
+video = pafy.new(url)
+best = video.getbest()
+playurl = best.url
+Instance = vlc.Instance()
+player = Instance.media_list_player_new()
+Media = Instance.media_new(playurl)
+MediaTest = Instance.media_list_new()
+
+MediaTest.add_media(Media.get_mrl())
+player.set_media_list(MediaTest)
+url = "https://www.youtube.com/watch?v=lvs68OKOquM"
+video = pafy.new(url)
+best = video.getbest()
+playurl = best.url
+Media = Instance.media_new(playurl)
+MediaTest.add_media(Media.get_mrl())
+
+
+MediaTest.add_media(Media.get_mrl())
+player.play()
+time.sleep(3)
+player.next()
+
 
 c = input("c = ")
 print(len(c))

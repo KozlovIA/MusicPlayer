@@ -79,7 +79,7 @@ color: rgb(0, 255, 255);</string>
         </widget>
        </item>
        <item row="0" column="0">
-        <widget class="QPushButton" name="playBack">
+        <widget class="QPushButton" name="playPrevious">
          <property name="styleSheet">
           <string notr="true">background-image: url(source/image/backButton.jpg);
 color: rgb(0, 255, 255);</string>

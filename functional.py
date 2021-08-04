@@ -6,34 +6,23 @@ import pafy
 import re, requests, subprocess, urllib.parse, urllib.request
 from bs4 import BeautifulSoup
 from gui import form
-
+# v1.5(alpha)   добавление next/previous и корректирка выводимых данных, большое обновление
 class PlayMusic():
     def __init__(self) -> None:
         self.Instance = vlc.Instance()
-        self.player = self.Instance.media_player_new()
-        self.MediaPlayer = vlc.MediaPlayer()
+        self.player = self.Instance.media_list_player_new()
+        self.mediaList = self.Instance.media_list_new()
         self.volume = 100       # текущее значение звука
         self.url = [""]*1000    # list для ссылок на песни
         self.songName = [""]*1000 # list названий песен
-        self.numberName = 0     # Номер имени песни для записи в переменную self.url
-        self.numberSong = 0     # Номер песни для вопроизведения
+        self.numberSongName = 0 # номер играющей песни для вывода информации
+        self.numberSong = 0     # Номер имени песни для записи в переменную self.url и mediaList
         self.firstPlay = True      # Переменная служит для использования вне класса, для проверки 1-го нажатия на Play/Pause
         
         
 
     def play(self):
-        video = pafy.new(self.url[self.numberSong])         # https://coderoad.ru/49354232/%D0%9A%D0%B0%D0%BA-%D0%BF%D0%B5%D1%80%D0%B5%D0%B4%D0%B0%D0%B2%D0%B0%D1%82%D1%8C-%D0%B0%D1%83%D0%B4%D0%B8%D0%BE-%D0%B8%D0%B7-Youtube-URL-%D0%B2-Python-%D0%B1%D0%B5%D0%B7-%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B8
-        best = video.getbest()
-        playurl = best.url
-        #Instance = vlc.Instance()
-        #player = self.Instance.media_player_new()
-        Media = self.Instance.media_new(playurl)
-        Media.get_mrl()
-        self.player.set_media(Media)
         self.player.play()
-        self.numberSong = self.numberSong + 1
-        #player.set_pause(1)
-
 
     def pause(self):
         self.player.pause()
@@ -43,17 +32,32 @@ class PlayMusic():
 
     def set_volume(self, vol):
         self.volume = vol
-        self.MediaPlayer.audio_set_volume(self.volume)
+        self.player.audio_set_volume(self.volume)
 
-    def addNext(self, url, name):
-        self.url[self.numberName] = url
-        self.songName[self.numberName] = name
-        self.numberName = self.numberName + 1
-        pass
+    def addNext(self, URL, name, video = True):
+        self.url[self.numberSong] = URL
+        self.songName[self.numberSong] = name 
+
+        video_audio = pafy.new(self.url[self.numberSong])         # https://coderoad.ru/49354232/%D0%9A%D0%B0%D0%BA-%D0%BF%D0%B5%D1%80%D0%B5%D0%B4%D0%B0%D0%B2%D0%B0%D1%82%D1%8C-%D0%B0%D1%83%D0%B4%D0%B8%D0%BE-%D0%B8%D0%B7-Youtube-URL-%D0%B2-Python-%D0%B1%D0%B5%D0%B7-%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B8
+        if video:
+            best = video_audio.getbest()
+        else:
+            best = video_audio.getbestaudio()
+        playurl = best.url
+        Media = self.Instance.media_new(playurl)
+        self.mediaList.add_media(Media.get_mrl())
+        if self.numberSong == 0:
+            self.player.set_media_list(self.mediaList)
+        self.numberSong = self.numberSong + 1
 
 
-    def playNext():
-        pass
+    def playNext(self):
+        self.player.next()
+        self.numberSongName = self.numberSongName + 1
+    def playPrevious(self):
+        self.player.previous()
+        self.numberSongName = self.numberSongName - 1
+        
 
     def searchUrl(self, music_name):
 
@@ -87,8 +91,11 @@ class PlayMusic():
 
 if __name__ == "__main__":
     test = PlayMusic()
-    song = test.searchUrl("Faint")
+    song = test.addNext("https://www.youtube.com/watch?v=0kJdWJXxF3Y", "Reason to Believe")
+    song = test.addNext("https://www.youtube.com/watch?v=zsCD5XCu6CM", "Somewhere I Belong")
     test.play()
-    test.test(20)
+    time.sleep(5)
+    test.playNext()
+
 
     a = input()

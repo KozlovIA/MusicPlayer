@@ -52,12 +52,12 @@ class Ui_ToxicMusicPlayer(object):
 
         self.gridLayout_2.addWidget(self.Play_Pause, 0, 1, 1, 1)
 
-        self.playBack = QPushButton(self.gridLayoutWidget)
-        self.playBack.setObjectName(u"playBack")
-        self.playBack.setStyleSheet(u"background-image: url(source/image/backButton.jpg);\n"
+        self.playPrevious = QPushButton(self.gridLayoutWidget)
+        self.playPrevious.setObjectName(u"playPrevious")
+        self.playPrevious.setStyleSheet(u"background-image: url(source/image/backButton.jpg);\n"
 "color: rgb(0, 255, 255);")
 
-        self.gridLayout_2.addWidget(self.playBack, 0, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.playPrevious, 0, 0, 1, 1)
 
         self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
@@ -147,7 +147,7 @@ class Ui_ToxicMusicPlayer(object):
         ToxicMusicPlayer.setWindowTitle(QCoreApplication.translate("ToxicMusicPlayer", u"ToxicMusicPlayer", None))
         self.playNext.setText(QCoreApplication.translate("ToxicMusicPlayer", u">>", None))
         self.Play_Pause.setText(QCoreApplication.translate("ToxicMusicPlayer", u"Play", None))
-        self.playBack.setText(QCoreApplication.translate("ToxicMusicPlayer", u"<<", None))
+        self.playPrevious.setText(QCoreApplication.translate("ToxicMusicPlayer", u"<<", None))
         self.playStop.setText(QCoreApplication.translate("ToxicMusicPlayer", u"Stop", None))
         self.songTime.setText(QCoreApplication.translate("ToxicMusicPlayer", u"0:00", None))
         self.songName.setText(QCoreApplication.translate("ToxicMusicPlayer", u"Playlist is empty", None))

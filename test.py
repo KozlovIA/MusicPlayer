@@ -112,7 +112,6 @@ playurl = best.url
 Instance = vlc.Instance()
 Media = Instance.media_new(playurl)
 MediaTest = Instance.media_list_new()
-print("MediaTest.media()", MediaTest.media())
 MediaTest.add_media(Media.get_mrl())
 url = "https://www.youtube.com/watch?v=lvs68OKOquM"
 video = pafy.new(url)
@@ -128,14 +127,14 @@ player.set_media_list(MediaTest)
 media_player = vlc.MediaPlayer()
 media_player.set_media(Media)
 
-print(media_player.is_playing())  
   
 # start playing video
 media_player.play()
 print(media_player.is_playing())  
 # wait so the video can be played for 5 seconds
 # irrespective for length of video
-time.sleep(5)
+time.sleep(0.01)
+print(media_player.get_length())  
 print(media_player.is_playing())
 
 c = input("c = ")

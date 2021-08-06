@@ -24,6 +24,7 @@ class PlayMusic():
     def play(self):
         self.player.set_media(self.Media[self.numberSongName_Play])
         self.player.play()
+        print(self.get_length)
 
     def pause(self):
         self.player.pause()
@@ -56,6 +57,13 @@ class PlayMusic():
         self.stop()
         self.numberSongName_Play -= 1
         self.play()
+
+    def get_length(self):
+        return self.player.get_length()
+    def set_time(self, time_ms):
+        self.player.set_time(time_ms)
+    def get_time(self):
+        return self.player.get_time()
 
     def searchUrl(self, music_name):
 

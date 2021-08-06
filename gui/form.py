@@ -27,9 +27,37 @@ class Ui_ToxicMusicPlayer(object):
         self.gridLayout = QGridLayout(self.gridLayoutWidget)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.volumeSlider = QSlider(self.gridLayoutWidget)
+        self.volumeSlider.setObjectName(u"volumeSlider")
+        self.volumeSlider.setMaximum(100)
+        self.volumeSlider.setOrientation(Qt.Vertical)
+
+        self.gridLayout.addWidget(self.volumeSlider, 1, 6, 1, 1)
+
         self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.gridLayout.addItem(self.verticalSpacer_2, 1, 0, 2, 1)
+
+        self.songTime = QLabel(self.gridLayoutWidget)
+        self.songTime.setObjectName(u"songTime")
+        self.songTime.setStyleSheet(u"color: rgb(255, 255, 255);")
+
+        self.gridLayout.addWidget(self.songTime, 1, 4, 1, 1)
+
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout.addItem(self.horizontalSpacer_3, 0, 0, 1, 2)
+
+        self.currentTime = QLabel(self.gridLayoutWidget)
+        self.currentTime.setObjectName(u"currentTime")
+        self.currentTime.setAutoFillBackground(False)
+        self.currentTime.setStyleSheet(u"color: rgb(255, 255, 255);")
+
+        self.gridLayout.addWidget(self.currentTime, 1, 1, 1, 1)
+
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
+
+        self.gridLayout.addItem(self.verticalSpacer, 0, 5, 3, 1)
 
         self.gridLayout_2 = QGridLayout()
         self.gridLayout_2.setObjectName(u"gridLayout_2")
@@ -73,41 +101,14 @@ class Ui_ToxicMusicPlayer(object):
 
         self.gridLayout.addLayout(self.gridLayout_2, 2, 1, 1, 4)
 
-        self.songTime = QLabel(self.gridLayoutWidget)
-        self.songTime.setObjectName(u"songTime")
-        self.songTime.setStyleSheet(u"color: rgb(255, 255, 255);")
-
-        self.gridLayout.addWidget(self.songTime, 1, 4, 1, 1)
-
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.gridLayout.addItem(self.verticalSpacer, 0, 5, 3, 1)
-
-        self.volumeSlider = QSlider(self.gridLayoutWidget)
-        self.volumeSlider.setObjectName(u"volumeSlider")
-        self.volumeSlider.setMaximum(100)
-        self.volumeSlider.setOrientation(Qt.Vertical)
-
-        self.gridLayout.addWidget(self.volumeSlider, 1, 6, 1, 1)
-
         self.songName = QLabel(self.gridLayoutWidget)
         self.songName.setObjectName(u"songName")
 
         self.gridLayout.addWidget(self.songName, 0, 2, 1, 2)
 
-        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout.addItem(self.horizontalSpacer_3, 0, 0, 1, 2)
-
-        self.timeAfterStart = QLabel(self.gridLayoutWidget)
-        self.timeAfterStart.setObjectName(u"timeAfterStart")
-        self.timeAfterStart.setAutoFillBackground(False)
-        self.timeAfterStart.setStyleSheet(u"color: rgb(255, 255, 255);")
-
-        self.gridLayout.addWidget(self.timeAfterStart, 1, 1, 1, 1)
-
         self.timeSlider = QSlider(self.gridLayoutWidget)
         self.timeSlider.setObjectName(u"timeSlider")
+        self.timeSlider.setMaximum(100)
         self.timeSlider.setOrientation(Qt.Horizontal)
 
         self.gridLayout.addWidget(self.timeSlider, 1, 3, 1, 1)
@@ -126,10 +127,6 @@ class Ui_ToxicMusicPlayer(object):
         self.AddMusicButton.setObjectName(u"AddMusicButton")
         self.AddMusicButton.setEnabled(True)
         self.AddMusicButton.setGeometry(QRect(530, 280, 75, 23))
-        self.testButton = QPushButton(self.centralwidget)
-        self.testButton.setObjectName(u"testButton")
-        self.testButton.setEnabled(True)
-        self.testButton.setGeometry(QRect(60, 220, 75, 23))
         ToxicMusicPlayer.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(ToxicMusicPlayer)
         self.menubar.setObjectName(u"menubar")
@@ -146,16 +143,15 @@ class Ui_ToxicMusicPlayer(object):
 
     def retranslateUi(self, ToxicMusicPlayer):
         ToxicMusicPlayer.setWindowTitle(QCoreApplication.translate("ToxicMusicPlayer", u"ToxicMusicPlayer", None))
+        self.songTime.setText(QCoreApplication.translate("ToxicMusicPlayer", u"0:00", None))
+        self.currentTime.setText(QCoreApplication.translate("ToxicMusicPlayer", u"0:00", None))
         self.playNext.setText(QCoreApplication.translate("ToxicMusicPlayer", u">>", None))
         self.Play_Pause.setText(QCoreApplication.translate("ToxicMusicPlayer", u"Play", None))
         self.playPrevious.setText(QCoreApplication.translate("ToxicMusicPlayer", u"<<", None))
         self.playStop.setText(QCoreApplication.translate("ToxicMusicPlayer", u"Stop", None))
-        self.songTime.setText(QCoreApplication.translate("ToxicMusicPlayer", u"0:00", None))
         self.songName.setText(QCoreApplication.translate("ToxicMusicPlayer", u"Playlist is empty", None))
-        self.timeAfterStart.setText(QCoreApplication.translate("ToxicMusicPlayer", u"0:00", None))
         self.AddMusic.setText("")
         self.label_WriteNameorUrl.setText(QCoreApplication.translate("ToxicMusicPlayer", u"Write the name or URL", None))
         self.AddMusicButton.setText(QCoreApplication.translate("ToxicMusicPlayer", u"Add to queue", None))
-        self.testButton.setText(QCoreApplication.translate("ToxicMusicPlayer", u"testButton", None))
     # retranslateUi
 

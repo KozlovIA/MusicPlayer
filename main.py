@@ -19,7 +19,7 @@ class ToxicMusicPlayer(QMainWindow):
 
 
 def test():
-    print("Lalala all")
+    print(ToxicFunctional.player.play_item_at_index(1))
 
 
 ToxicFunctional = functional.PlayMusic()
@@ -73,15 +73,16 @@ main_window = QtWidgets.QMainWindow()
 ui.setupUi(main_window)
 main_window.show()   
 #functional------------------------------------------------------------------------------------------------------
-ui.Play_Pause.clicked.connect(play_pause)    
-ui.AddMusicButton.clicked.connect(searchUrl)
-ui.playStop.clicked.connect(stop)
-ui.playNext.clicked.connect(playNext)
-ui.playPrevious.clicked.connect(playPrevious)
-ui.volumeSlider.valueChanged.connect(volumeChange)
+while True:
+    ui.Play_Pause.clicked.connect(play_pause)    
+    ui.AddMusicButton.clicked.connect(searchUrl)
+    ui.playStop.clicked.connect(stop)
+    ui.playNext.clicked.connect(playNext)
+    ui.playPrevious.clicked.connect(playPrevious)
+    ui.volumeSlider.valueChanged.connect(volumeChange)
 
-#ui.testButton.clicked.connect(test)
+    ui.testButton.clicked.connect(test)
 #----------------------------------------------------------------------------------------------------------------
-RetCode = app.exec()
-sys.exit(RetCode)
+    RetCode = app.exec()
+    sys.exit(RetCode)
 

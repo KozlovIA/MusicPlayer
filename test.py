@@ -69,7 +69,7 @@ player.play()                   # Работает!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
 # TEST MediaList(Player)
-url = "https://www.youtube.com/watch?v=LYU-8IFcDPw"
+""" url = "https://www.youtube.com/watch?v=LYU-8IFcDPw"
 video = pafy.new(url)
 best = video.getbest()
 playurl = best.url
@@ -77,7 +77,7 @@ Instance = vlc.Instance()
 player = Instance.media_list_player_new()
 Media = Instance.media_new(playurl)
 MediaTest = Instance.media_list_new()
-
+print("MediaTest.media()", MediaTest.media())
 MediaTest.add_media(Media.get_mrl())
 player.set_media_list(MediaTest)
 url = "https://www.youtube.com/watch?v=lvs68OKOquM"
@@ -87,13 +87,55 @@ playurl = best.url
 Media = Instance.media_new(playurl)
 MediaTest.add_media(Media.get_mrl())
 
-
-MediaTest.add_media(Media.get_mrl())
 player.play()
+print("get_media_player", player.get_media_player)
 time.sleep(3)
-player.next()
+print("MediaTest.media()", MediaTest.media()) """
 
+
+url = "https://www.youtube.com/watch?v=LYU-8IFcDPw"
+video = pafy.new(url)
+best = video.getbest()
+playurl = best.url
+Instance = vlc.Instance() 
+Media = Instance.media_new(playurl)
+# creating vlc media player object
+
+  
+# media object
+#media = vlc.Media("source\music\Life Eternal.mp3")
+
+url = "https://www.youtube.com/watch?v=LYU-8IFcDPw"
+video = pafy.new(url)
+best = video.getbest()
+playurl = best.url
+Instance = vlc.Instance()
+Media = Instance.media_new(playurl)
+MediaTest = Instance.media_list_new()
+print("MediaTest.media()", MediaTest.media())
+MediaTest.add_media(Media.get_mrl())
+url = "https://www.youtube.com/watch?v=lvs68OKOquM"
+video = pafy.new(url)
+best = video.getbest()
+playurl = best.url
+Media = Instance.media_new(playurl)
+MediaTest.add_media(Media.get_mrl())
+
+
+player = Instance.media_list_player_new()
+player.set_media_list(MediaTest)
+# setting media to the media player
+media_player = vlc.MediaPlayer()
+media_player.set_media(Media)
+
+print(media_player.is_playing())  
+  
+# start playing video
+media_player.play()
+print(media_player.is_playing())  
+# wait so the video can be played for 5 seconds
+# irrespective for length of video
+time.sleep(5)
+print(media_player.is_playing())
 
 c = input("c = ")
-print(len(c))
-

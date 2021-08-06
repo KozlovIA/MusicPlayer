@@ -128,6 +128,7 @@ class Ui_ToxicMusicPlayer(object):
         self.AddMusicButton.setGeometry(QRect(530, 280, 75, 23))
         self.testButton = QPushButton(self.centralwidget)
         self.testButton.setObjectName(u"testButton")
+        self.testButton.setEnabled(True)
         self.testButton.setGeometry(QRect(60, 220, 75, 23))
         ToxicMusicPlayer.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(ToxicMusicPlayer)

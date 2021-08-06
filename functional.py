@@ -10,18 +10,19 @@ from gui import form
 class PlayMusic():
     def __init__(self) -> None:
         self.Instance = vlc.Instance()
-        self.player = self.Instance.media_list_player_new()
-        self.mediaList = self.Instance.media_list_new()
+        self.player = vlc.MediaPlayer()    
         self.volume = 100       # текущее значение звука
+        self.Media = [""]*1000        # mrl соответствующих треков для воспроизведения их в MediaPlayer
         self.url = [""]*1000    # list для ссылок на песни
         self.songName = [""]*1000 # list названий песен
-        self.numberSongName = 0 # номер играющей песни для вывода информации
-        self.numberSong = 0     # Номер имени песни для записи в переменную self.url и mediaList
+        self.numberSongName_Play = 0 # номер играющей песни для вывода информации и песни для проигрывания
+        self.numberSong = 0     # Номер имени песни для записи в переменную self.url и self.media_mrl
         self.firstPlay = True      # Переменная служит для использования вне класса, для проверки 1-го нажатия на Play/Pause
         
         
 
     def play(self):
+        self.player.set_media(self.Media[self.numberSongName_Play])
         self.player.play()
 
     def pause(self):
@@ -44,20 +45,17 @@ class PlayMusic():
         else:
             best = video_audio.getbestaudio()
         playurl = best.url
-        Media = self.Instance.media_new(playurl)
-        self.mediaList.add_media(Media.get_mrl())
-        if self.numberSong == 0:
-            self.player.set_media_list(self.mediaList)
+        self.Media[self.numberSong] = self.Instance.media_new(playurl)
         self.numberSong = self.numberSong + 1
 
-
     def playNext(self):
-        self.player.next()
-        self.numberSongName = self.numberSongName + 1
+        self.stop()
+        self.numberSongName_Play += 1
+        self.play()
     def playPrevious(self):
-        self.player.previous()
-        self.numberSongName = self.numberSongName - 1
-        
+        self.stop()
+        self.numberSongName_Play -= 1
+        self.play()
 
     def searchUrl(self, music_name):
 
@@ -83,10 +81,8 @@ class PlayMusic():
         return clip2, concatMusic1['content']                
 
 
-    def test(self, vol):
-        print("volume: ")
-        self.MediaPlayer.audio_set_volume(vol)
-        print(self.MediaPlayer.audio_get_volume())
+    def test(self):
+        print("MediaTest.media()", self.mediaList.media())
     
 
 if __name__ == "__main__":
@@ -94,8 +90,10 @@ if __name__ == "__main__":
     song = test.addNext("https://www.youtube.com/watch?v=0kJdWJXxF3Y", "Reason to Believe")
     song = test.addNext("https://www.youtube.com/watch?v=zsCD5XCu6CM", "Somewhere I Belong")
     test.play()
-    time.sleep(5)
-    test.playNext()
+    time.sleep(2)
+
 
 
     a = input()
+
+# Остановился на поиске длительности композиции

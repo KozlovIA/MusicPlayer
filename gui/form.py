@@ -113,20 +113,46 @@ class Ui_ToxicMusicPlayer(object):
 
         self.gridLayout.addWidget(self.timeSlider, 1, 3, 1, 1)
 
-        self.graphicsView = QGraphicsView(self.centralwidget)
-        self.graphicsView.setObjectName(u"graphicsView")
-        self.graphicsView.setGeometry(QRect(230, 0, 291, 241))
-        self.graphicsView.setStyleSheet(u"")
-        self.AddMusic = QLineEdit(self.centralwidget)
-        self.AddMusic.setObjectName(u"AddMusic")
-        self.AddMusic.setGeometry(QRect(220, 270, 301, 41))
-        self.label_WriteNameorUrl = QLabel(self.centralwidget)
+        self.gridLayoutWidget_2 = QWidget(self.centralwidget)
+        self.gridLayoutWidget_2.setObjectName(u"gridLayoutWidget_2")
+        self.gridLayoutWidget_2.setGeometry(QRect(200, 20, 361, 341))
+        self.gridLayout_3 = QGridLayout(self.gridLayoutWidget_2)
+        self.gridLayout_3.setObjectName(u"gridLayout_3")
+        self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.label_WriteNameorUrl = QLabel(self.gridLayoutWidget_2)
         self.label_WriteNameorUrl.setObjectName(u"label_WriteNameorUrl")
-        self.label_WriteNameorUrl.setGeometry(QRect(220, 250, 181, 20))
-        self.AddMusicButton = QPushButton(self.centralwidget)
+
+        self.gridLayout_3.addWidget(self.label_WriteNameorUrl, 3, 0, 1, 1)
+
+        self.AddMusic = QLineEdit(self.gridLayoutWidget_2)
+        self.AddMusic.setObjectName(u"AddMusic")
+
+        self.gridLayout_3.addWidget(self.AddMusic, 5, 0, 1, 1)
+
+        self.playVideoCheck = QCheckBox(self.gridLayoutWidget_2)
+        self.playVideoCheck.setObjectName(u"playVideoCheck")
+
+        self.gridLayout_3.addWidget(self.playVideoCheck, 3, 1, 1, 1)
+
+        self.AddMusicButton = QPushButton(self.gridLayoutWidget_2)
         self.AddMusicButton.setObjectName(u"AddMusicButton")
         self.AddMusicButton.setEnabled(True)
-        self.AddMusicButton.setGeometry(QRect(530, 280, 75, 23))
+
+        self.gridLayout_3.addWidget(self.AddMusicButton, 5, 1, 1, 1)
+
+        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout_3.addItem(self.horizontalSpacer_4, 2, 0, 1, 2)
+
+        self.horizontalSpacer_5 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout_3.addItem(self.horizontalSpacer_5, 4, 0, 1, 2)
+
+        self.playlistWidget = QListWidget(self.gridLayoutWidget_2)
+        self.playlistWidget.setObjectName(u"playlistWidget")
+
+        self.gridLayout_3.addWidget(self.playlistWidget, 1, 0, 1, 2)
+
         ToxicMusicPlayer.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(ToxicMusicPlayer)
         self.menubar.setObjectName(u"menubar")
@@ -150,8 +176,9 @@ class Ui_ToxicMusicPlayer(object):
         self.playPrevious.setText(QCoreApplication.translate("ToxicMusicPlayer", u"<<", None))
         self.playStop.setText(QCoreApplication.translate("ToxicMusicPlayer", u"Stop", None))
         self.songName.setText(QCoreApplication.translate("ToxicMusicPlayer", u"Playlist is empty", None))
-        self.AddMusic.setText("")
         self.label_WriteNameorUrl.setText(QCoreApplication.translate("ToxicMusicPlayer", u"Write the name or URL", None))
-        self.AddMusicButton.setText(QCoreApplication.translate("ToxicMusicPlayer", u"Add to queue", None))
+        self.AddMusic.setText("")
+        self.playVideoCheck.setText(QCoreApplication.translate("ToxicMusicPlayer", u"Play video", None))
+        self.AddMusicButton.setText(QCoreApplication.translate("ToxicMusicPlayer", u"Add to playlist", None))
     # retranslateUi
 

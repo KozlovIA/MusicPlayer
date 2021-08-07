@@ -24,7 +24,6 @@ class PlayMusic():
     def play(self):
         self.player.set_media(self.Media[self.numberSongName_Play])
         self.player.play()
-        print(self.get_length)
 
     def pause(self):
         self.player.pause()
@@ -84,24 +83,21 @@ class PlayMusic():
         for concatMusic1 in yt_title:
             pass
         #print(concatMusic1['content'])
-        self.addNext(clip2, concatMusic1['content'])
 
         return clip2, concatMusic1['content']                
 
-
     def test(self):
-        print("MediaTest.media()", self.mediaList.media())
+        pass
     
 
 if __name__ == "__main__":
     test = PlayMusic()
     song = test.addNext("https://www.youtube.com/watch?v=0kJdWJXxF3Y", "Reason to Believe")
     song = test.addNext("https://www.youtube.com/watch?v=zsCD5XCu6CM", "Somewhere I Belong")
+
     test.play()
     time.sleep(2)
 
 
 
     a = input()
-
-# Остановился на поиске длительности композиции

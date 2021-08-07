@@ -93,7 +93,7 @@ time.sleep(3)
 print("MediaTest.media()", MediaTest.media()) """
 
 
-url = "https://www.youtube.com/watch?v=LYU-8IFcDPw"
+""" url = "https://www.youtube.com/watch?v=LYU-8IFcDPw"
 video = pafy.new(url)
 best = video.getbest()
 playurl = best.url
@@ -136,5 +136,8 @@ print(media_player.is_playing())
 time.sleep(0.01)
 print(media_player.get_length())  
 print(media_player.is_playing())
+ """
+
+print('{blue}Текст будет голубым{endcolor}'.format(blue='\033[96m', endcolor='\033[0m'))
 
 c = input("c = ")
